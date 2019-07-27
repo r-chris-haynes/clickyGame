@@ -10,7 +10,8 @@ class Game extends Component {
     friends,
     score: 0,
     topScore: 0,
-    selectedIds: []
+    selectedIds: [],
+    clicked: false
   };
 
   selectCard = id => {
@@ -18,35 +19,32 @@ class Game extends Component {
 
     // const alreadyPicked = this.state.selectedIds.find(oldId => oldId === id)
 
-    var alreadyPicked = null
-    for(var i = 0; i < this.state.selectedIds.length; i++ ) {
-      if(id === this.state.selectedIds[i]) {
-        alreadyPicked = id
-      }
-    }
+    // var alreadyPicked = null
+    // for(var i = 0; i < this.state.selectedIds.length; i++ ) {
+    //   if(id === this.state.selectedIds[i]) {
+    //     alreadyPicked = id
+    //   }
+    // }
 
-    if (alreadyPicked !== null) {
-      console.log("Game over!")
-    }
+    // if (alreadyPicked !== null) {
+    //   console.log("Game over!")
+      
+    // }
 
-    const newSelectedIds = [...this.state.selectedIds, id]
+    const newSelectedIds = [...this.state.selectedIds, id];
 
-    this.setState({
-      selectedIds: newSelectedIds
+    if(newSelectedIds)
+      this.setState({
+      selectedIds: newSelectedIds,
+      score: this.state.score + 1
     })
-
-
-
-
-  
-
     console.log(newSelectedIds)
   }
 
   render() {
     return (
       <div>
-        <Navbar score={this.state.score} topScore={this.state.topScore}/>
+        <Navbar incorrect={this} score={this.state.score} topScore={this.state.topScore}/>
         <Wrapper>
         
          {this.state.friends.map(friend => (
