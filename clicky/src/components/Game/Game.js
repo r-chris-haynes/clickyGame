@@ -9,8 +9,13 @@ class Game extends Component {
   state = {
     friends,
     score: 0,
-    topScore: 0
+    topScore: 0,
+    selectedIds: []
   };
+
+  selectCard = id => {
+    console.log(id)
+  }
 
   render() {
     return (
