@@ -17,7 +17,17 @@ class Game extends Component {
       <div>
         <Navbar score={this.state.score} topScore={this.state.topScore}/>
         <Wrapper>
-        <Cards />
+        
+         {this.state.friends.map(friend => (
+          <Cards
+            selectCard={this.selectCard}
+            id={friend.id}
+            key={friend.id}
+            name={friend.name}
+            image={friend.image}
+          />
+        ))}
+        />
         </Wrapper>
       </div>
     );
