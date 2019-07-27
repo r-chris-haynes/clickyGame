@@ -15,6 +15,32 @@ class Game extends Component {
 
   selectCard = id => {
     console.log(id)
+
+    // const alreadyPicked = this.state.selectedIds.find(oldId => oldId === id)
+
+    var alreadyPicked = null
+    for(var i = 0; i < this.state.selectedIds.length; i++ ) {
+      if(id === this.state.selectedIds[i]) {
+        alreadyPicked = id
+      }
+    }
+
+    if (alreadyPicked !== null) {
+      console.log("Game over!")
+    }
+
+    const newSelectedIds = [...this.state.selectedIds, id]
+
+    this.setState({
+      selectedIds: newSelectedIds
+    })
+
+
+
+
+  
+
+    console.log(newSelectedIds)
   }
 
   render() {
