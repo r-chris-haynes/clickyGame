@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import "./Game.css";
 import friends from "../../friends.json";
-import Navbar from "../Navbar"
+import Navbar from "../Navbar";
 import Cards from "../Cards";
 import Wrapper from "../Wrapper";
+import GameOver from "../GameOver";
 
 class Game extends Component {
   state = {
@@ -11,52 +12,56 @@ class Game extends Component {
     score: 0,
     topScore: 0,
     selectedIds: [],
-    clicked: false
+    alert: ""
   };
 
-  selectCard = id => {
-    console.log(id)
-
-    // const alreadyPicked = this.state.selectedIds.find(oldId => oldId === id)
-
-    // var alreadyPicked = null
-    // for(var i = 0; i < this.state.selectedIds.length; i++ ) {
-    //   if(id === this.state.selectedIds[i]) {
-    //     alreadyPicked = id
-    //   }
-    // }
-
-    // if (alreadyPicked !== null) {
-    //   console.log("Game over!")
-      
-    // }
-
-    const newSelectedIds = [...this.state.selectedIds, id];
-
-    if(newSelectedIds)
+  shuffleCards = () => {
+    const friends = this.state.friends.sort( 
+      () => Math.floor(Math.random() - 1));
       this.setState({
-      selectedIds: newSelectedIds,
-      score: this.state.score + 1
-    })
-    console.log(newSelectedIds)
+        friends:friends
+      })
   }
+
+  selectCard = id => {
+    console.log(id);
+   
+    if (!this.state.selectedIds.includes(id)) {
+      this.state.selectedIds.push(id);
+      this.setState({ 
+        score: this.state.score + 1,
+       
+      });
+    }  
+    else {
+     console.log("game over")
+      this.setState({
+        topScore: this.state.score,
+        score: 0,
+        selectedIds: [],
+        alert: this.state.alert + "Game Over!"
+      });
+    }
+   this.shuffleCards() 
+  };
 
   render() {
     return (
       <div>
-        <Navbar incorrect={this} score={this.state.score} topScore={this.state.topScore}/>
+        <Navbar score={this.state.score} topScore={this.state.topScore} />
         <Wrapper>
-        
-         {this.state.friends.map(friend => (
-          <Cards
-            selectCard={this.selectCard}
-            id={friend.id}
-            key={friend.id}
-            name={friend.name}
-            image={friend.image}
+          <GameOver alert ={this.state.alert} />
+          {this.state.friends.map(friend => (
+            <Cards
+              selectCard={this.selectCard}
+              id={friend.id}
+              key={friend.id}
+              name={friend.name}
+              image={friend.image}
+            />
+          ))}
           />
-        ))}
-        />
+
         </Wrapper>
       </div>
     );
