@@ -16,33 +16,33 @@ class Game extends Component {
   };
 
   shuffleCards = () => {
-    const friends = this.state.friends.sort( 
-      () => Math.floor(Math.random() - 1));
-      this.setState({
-        friends:friends
-      })
-  }
+    const friends = this.state.friends.sort(() =>
+      Math.floor(Math.random() * 2 - 1)
+    );
+    this.setState({
+      friends: friends
+    });
+  };
 
   selectCard = id => {
     console.log(id);
-   
+
     if (!this.state.selectedIds.includes(id)) {
       this.state.selectedIds.push(id);
-      this.setState({ 
-        score: this.state.score + 1,
-       
+      this.setState({
+        score: this.state.score + 1
       });
-    }  
-    else {
-     console.log("game over")
+    } else {
+      console.log("game over");
       this.setState({
         topScore: this.state.score,
         score: 0,
         selectedIds: [],
         alert: this.state.alert + "Game Over!"
       });
-    }
-   this.shuffleCards() 
+    
+  }
+    this.shuffleCards();
   };
 
   render() {
@@ -50,7 +50,7 @@ class Game extends Component {
       <div>
         <Navbar score={this.state.score} topScore={this.state.topScore} />
         <Wrapper>
-          <GameOver alert ={this.state.alert} />
+          <GameOver alert={this.state.alert} />
           {this.state.friends.map(friend => (
             <Cards
               selectCard={this.selectCard}
@@ -60,8 +60,6 @@ class Game extends Component {
               image={friend.image}
             />
           ))}
-          />
-
         </Wrapper>
       </div>
     );
