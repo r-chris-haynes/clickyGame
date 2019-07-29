@@ -1,20 +1,23 @@
 import React from "react";
+import "./Navbar.css";
 
 const Navbar = props => (
-  <nav className="navbar navbar-primary bg-primary">
-    <h2 style={{color:"white"}}>Clicky Game</h2>
+  <nav className="navbar">
+    <h2>Clicky Game</h2>
 
     <span className="navbar-text">
-      Click all images only once to win 
+      Click all of the images only once to win
     </span>
+    <h5 className="navbar-text">
+      {props.alert}
+    </h5>
     <ul className="nav text-white nav-fills">
       <li className="nav-item">
-        <span className="nav-link" href="#!">  SCORE {props.score} | TOPSCORE {props.topScore}</span>
+        <span className="nav-link">  SCORE {props.score} | TOPSCORE {props.topScore}</span>
       </li>
     </ul>
 
   </nav>
-
 )
 
 export default Navbar;

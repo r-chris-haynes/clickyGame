@@ -1,12 +1,12 @@
-import React from "react";
-import "./GameOver.css";
+// import React from "react";
+// import "./GameOver.css";
 
-const GameOver = props => {
-    return(
-        <div className="container">
-            <div className="GameOver">{props.alert}</div>
-        </div>
-    )
-}
+// const GameOver = props => {
+//     return(
+//         <div className="container">
+//             <div className="GameOver">{props.alert}</div>
+//         </div>
+//     )
+// }
 
-export default GameOver
+// export default GameOver
