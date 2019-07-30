@@ -4,7 +4,6 @@ import friends from "../../friends.json";
 import Navbar from "../Navbar";
 import Cards from "../Cards";
 import Wrapper from "../Wrapper";
-// import GameOver from "../GameOver";
 
 class Game extends Component {
   state = {
@@ -16,6 +15,8 @@ class Game extends Component {
   };
 
   shuffleCards = () => {
+    
+    
     const friends = this.state.friends.sort(() =>
       Math.floor(Math.random() * 1 - 1)
     );
@@ -23,36 +24,43 @@ class Game extends Component {
   };
 
   selectCard = id => {
-    // console.log(id);
-
     if (!this.state.selectedIds.includes(id)) {
       this.state.selectedIds.push(id);
       this.setState({
         score: this.state.score + 1,
         alert: this.state.alert + "Correct!",
+      
+      
+      
+      
       });
+    // } else if (this.state.score > this.state.topScore) {
+    //   this.setState({
+    //     topScore: this.state.score,
+    //   });
     } else {
-      console.log("game over");
+      if(this.state.score > this.state.topScore) {
+        this.setState({ topScore: this.state.score })
+      }
       this.setState({
-        topScore: this.state.score,
-        score: 0,
+         score: 0,
         selectedIds: [],
         alert: this.state.alert + "Game Over!"
-      });
+      })
+    }
     
-  }
-    this.shuffleCards();
     setTimeout(() => {
+      this.shuffleCards();
       this.setState({ alert: "" });
-    }, 1500);
+    }, 1000);
   };
 
   render() {
     return (
-      <div>
+      <div> 
         <Navbar score={this.state.score} topScore={this.state.topScore} alert={this.state.alert}/>
+        <div className="container">
         <Wrapper>
-          {/* <GameOver alert={this.state.alert} /> */}
           {this.state.friends.map(friend => (
             <Cards
               selectCard={this.selectCard}
@@ -63,6 +71,7 @@ class Game extends Component {
             />
           ))}
         </Wrapper>
+        </div>
       </div>
     );
   }
