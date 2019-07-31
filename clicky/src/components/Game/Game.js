@@ -4,6 +4,7 @@ import friends from "../../friends.json";
 import Navbar from "../Navbar";
 import Cards from "../Cards";
 import Wrapper from "../Wrapper";
+import Footer from "../Footer";
 
 class Game extends Component {
   state = {
@@ -65,6 +66,7 @@ class Game extends Component {
               />
             ))}
           </Wrapper>
+          <Footer />
         </div>
       </div>
     );
