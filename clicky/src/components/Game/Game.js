@@ -15,8 +15,6 @@ class Game extends Component {
   };
 
   shuffleCards = () => {
-    
-    
     const friends = this.state.friends.sort(() =>
       Math.floor(Math.random() * 1 - 1)
     );
@@ -28,27 +26,19 @@ class Game extends Component {
       this.state.selectedIds.push(id);
       this.setState({
         score: this.state.score + 1,
-        alert: this.state.alert + "Correct!",
-      
-      
-      
-      
+        alert: this.state.alert + "Correct!"
       });
-    // } else if (this.state.score > this.state.topScore) {
-    //   this.setState({
-    //     topScore: this.state.score,
-    //   });
     } else {
-      if(this.state.score > this.state.topScore) {
-        this.setState({ topScore: this.state.score })
+      if (this.state.score > this.state.topScore) {
+        this.setState({ topScore: this.state.score });
       }
       this.setState({
-         score: 0,
+        score: 0,
         selectedIds: [],
         alert: this.state.alert + "Game Over!"
-      })
+      });
     }
-    
+
     setTimeout(() => {
       this.shuffleCards();
       this.setState({ alert: "" });
@@ -57,20 +47,24 @@ class Game extends Component {
 
   render() {
     return (
-      <div> 
-        <Navbar score={this.state.score} topScore={this.state.topScore} alert={this.state.alert}/>
+      <div>
+        <Navbar
+          score={this.state.score}
+          topScore={this.state.topScore}
+          alert={this.state.alert}
+        />
         <div className="container">
-        <Wrapper>
-          {this.state.friends.map(friend => (
-            <Cards
-              selectCard={this.selectCard}
-              id={friend.id}
-              key={friend.id}
-              name={friend.name}
-              image={friend.image}
-            />
-          ))}
-        </Wrapper>
+          <Wrapper>
+            {this.state.friends.map(friend => (
+              <Cards
+                selectCard={this.selectCard}
+                id={friend.id}
+                key={friend.id}
+                name={friend.name}
+                image={friend.image}
+              />
+            ))}
+          </Wrapper>
         </div>
       </div>
     );
