@@ -1,4 +1,6 @@
 .footer {
-    /* width: 100%; */
     background: rgb(230, 19, 19) !important;
-}
+    text-align: center !important;
+    color: white !important;
+    font-size: 10px !important;
+};
