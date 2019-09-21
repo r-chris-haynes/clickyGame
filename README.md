@@ -1,7 +1,7 @@
 Clicky Game is a memory game created with React.  
 
-Users must select all of the images only once to win.
+Score points by not selecting the same card twice.  If a card is chosen twice, then the game is over.  
 
-Here's the link to play
-https://r-chris-haynes.github.io/clickyGame
+Here's the link to play: 
+ https://r-chris-haynes.github.io/clickyGame
 
