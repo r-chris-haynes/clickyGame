@@ -48,7 +48,7 @@ class Game extends Component {
 
   render() {
     return (
-      <div>
+      <div className="mainContainer"> 
         <Navbar
           score={this.state.score}
           topScore={this.state.topScore}
@@ -66,9 +66,12 @@ class Game extends Component {
               />
             ))}
           </ Wrapper>
+          </div>
+         <div>
           <Footer />
-        </div>
+          </div>
       </div>
+   
     );
   }
 }

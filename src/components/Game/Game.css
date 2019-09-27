@@ -1,8 +1,8 @@
 body {
-    background: beige;  
+    background: beige; 
 }
 .container {
 max-width: 100%;
-background: beige;
-padding-top: 50px;
+padding-top: 30px;
+padding-bottom: 30px;
 }
