@@ -65,7 +65,7 @@ class Game extends Component {
                 image={friend.image}
               />
             ))}
-          </Wrapper>
+          </ Wrapper>
           <Footer />
         </div>
       </div>
