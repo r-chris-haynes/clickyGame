@@ -14,4 +14,10 @@ This is a Garbage Pail Kids memory game, created with React.  The application's 
 # Try it Out
 **Here's the link to play:** 
   https://r-chris-haynes.github.io/clickyGame
+  
+# Technologies Used
+* React
+* JavaScript/ES6
+* CSS
+* Bootstrap
 
