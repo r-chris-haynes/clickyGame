@@ -8,6 +8,9 @@ This is a Garbage Pail Kids memory game, created with React.  The application's 
 * If a user outscores a previous game, then their score will become the new top score 
 * If a card is chosen twice, then the game is over  
 
+# Demo Gif
+![](clickyGif4.gif)
+
 # Try it Out
 **Here's the link to play:** 
   https://r-chris-haynes.github.io/clickyGame
